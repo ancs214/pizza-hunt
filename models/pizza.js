@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+//CREATE MONGOOSE SCHEMA
 const PizzaSchema = new Schema({
     pizzaName: {
       type: String

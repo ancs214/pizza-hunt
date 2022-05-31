@@ -1,9 +1,7 @@
 const { Pizza } = require('../models');
 
-//CREATING OBJECT
+//CREATING OBJECT WITH ROUTE METHODS
 const pizzaController = {
-
-    //THESE ARE OBJECT METHODS
 
     // const dogObject = {
     //     bark: function() {
@@ -26,7 +24,7 @@ const pizzaController = {
             });
     },
 
-    // get one pizza by id  ---  GET /api/pizzas
+    // get one pizza by id  --->  GET /api/pizzas
     // Instead of accessing the entire req, we've destructured params out of it, because that's the only data we need for this request
     getPizzaById({ params }, res) {
         Pizza.findOne({ _id: params.id })
@@ -44,7 +42,7 @@ const pizzaController = {
             });
     },
 
-    // createPizza  ---   POST /api/pizzas
+    // createPizza  --->   POST /api/pizzas
     // destructure the body out of the Express.js req object because we don't need to interface with any of the other data it provides
     createPizza({ body }, res) {
         //similar to sequelize, mongoose uses .create() to create data
@@ -53,7 +51,7 @@ const pizzaController = {
             .catch(err => res.status(400).json(err));
     },
 
-    // update pizza by id  ---   PUT /api/pizzas/:id
+    // update pizza by id  --->   PUT /api/pizzas/:id
 updatePizza({ params, body }, res) {
     //setting new: true will return the updated document. if we dont set, it will return the original document instead
     Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
