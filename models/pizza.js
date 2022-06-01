@@ -18,9 +18,9 @@ const PizzaSchema = new Schema({
   },
   // [] indicates an array as the data type
   toppings: [],
-  //we need to tell Mongoose to expect ObjectId and that the data comes from the Comment model
   comments: [
     {
+      //we need to tell Mongoose to expect ObjectId and that the data comes from the Comment model
       type: Schema.Types.ObjectId,
       //ref tells the Pizza model which doc to search to find the right comments
       ref: 'Comment'
