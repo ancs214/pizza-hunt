@@ -7,6 +7,8 @@ const pizzaController = {
   //     bark: function() {
   //       console.log('Woof!');
   //     }
+
+
   //IS THE SAME AS:
   // bark() {
   //     console.log('Woof!');
@@ -17,6 +19,16 @@ const pizzaController = {
   // get all pizzas
   getAllPizza(req, res) {
     Pizza.find({})
+      //populate with the comments model also
+      .populate({
+        path: 'comments',
+        //do not include the comment's __v field
+        select: '-__v'
+      })
+      //do not include pizza's __v field
+      .select('-__v')
+      //sort in DESC order by id value
+      .sort({ _id: -1 })
       .then(dbPizzaData => res.json(dbPizzaData))
       .catch(err => {
         console.log(err);
@@ -27,7 +39,13 @@ const pizzaController = {
   // get one pizza by id  --->  GET /api/pizzas
   // Instead of accessing the entire req, we've destructured params out of it, because that's the only data we need for this request
   getPizzaById({ params }, res) {
+    //shorthand to set _id to equal params.id
     Pizza.findOne({ _id: params.id })
+      .populate({
+        path: 'comments',
+        select: '-__v'
+      })
+      .select('-__v')
       .then(dbPizzaData => {
         // If no pizza is found, send 404
         if (!dbPizzaData) {

@@ -18,9 +18,10 @@ const PizzaSchema = new Schema({
   },
   // [] indicates an array as the data type
   toppings: [],
+  //When you add data into a nested array of a MongoDB document, they become what's known as a "nested document" or "subdocument"
   comments: [
     {
-      //we need to tell Mongoose to expect ObjectId and that the data comes from the Comment model
+      //we need to tell Mongoose to expect ObjectId and that the data comes from the Comment model - create new objectid instance?
       type: Schema.Types.ObjectId,
       //ref tells the Pizza model which doc to search to find the right comments
       ref: 'Comment'

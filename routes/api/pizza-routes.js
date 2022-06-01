@@ -8,7 +8,7 @@ const {
     deletePizza
   } = require('../../controllers/pizza-controller');
 
-// Instead of creating duplicate routes for the individual HTTP methods, we can combine them!
+//  (Instead of creating duplicate routes for the individual HTTP methods, we can combine them!)
 
 // Set up GET all and POST --->  /api/pizzas
 router

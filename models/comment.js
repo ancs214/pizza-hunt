@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 //CREATE SCHEMA
 const CommentSchema = new Schema ({
     writtenBy: {
-        type: toString
+        type: String
     },
     commentBody: {
         type: String 

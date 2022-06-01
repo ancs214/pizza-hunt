@@ -8,10 +8,11 @@ const commentController = {
         //automatically creates an id
         Comment.create(body)
             //take the id and use $push method to add the id to the specific pizza we want to update
-            //When you add data into a nested array of a MongoDB document, they become what's known as a "nested document" or "subdocument"
             .then(({ _id }) => {
                 return Pizza.findOneAndUpdate(
+                    //find single pizza with params argument
                     { _id: params.pizzaId },
+                    //push the comment id onto the array
                     { $push: { comments: _id } },
                     //return updated pizza data
                     { new: true }
