@@ -100,6 +100,7 @@ function printReply(reply) {
 `;
 }
 
+//NEW COMMENT
 function handleNewCommentSubmit(event) {
   event.preventDefault();
 
@@ -112,6 +113,7 @@ function handleNewCommentSubmit(event) {
 
   const formData = { commentBody, writtenBy };
 
+  //make POST request for individual comment
   fetch(`/api/comments/${pizzaId}`, {
     method: 'POST',
     headers: {
@@ -136,6 +138,7 @@ function handleNewCommentSubmit(event) {
 }
 
 
+//NEW REPLY TO COMMENT
 function handleNewReplySubmit(event) {
   event.preventDefault();
 
