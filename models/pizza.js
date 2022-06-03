@@ -4,10 +4,14 @@ const dateFormat = require('../utils/dateFormat');
 //CREATE MONGOOSE SCHEMA
 const PizzaSchema = new Schema({
   pizzaName: {
-    type: String
+    type: String,
+    required: 'You need to provide a pizza name!',
+    trim: true
   },
   createdBy: {
-    type: String
+    type: String,
+    required: 'You need to provide a createdBy author!', 
+    trim: true
   },
   createdAt: {
     type: Date,
@@ -17,6 +21,9 @@ const PizzaSchema = new Schema({
   },
   size: {
     type: String,
+    required: true,
+    //enum stands for enumerable; refers to a set of data that can be iterated over
+    enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
     default: 'Large'
   },
   // [] indicates an array as the data type

@@ -73,7 +73,8 @@ const pizzaController = {
   // With Mongoose, the "where" clause is used first, then the updated data, then options for how the data should be returned.
   updatePizza({ params, body }, res) {
     //setting new: true will return the updated document. if we dont set, it will return the original document instead
-    Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
+    //runValidators will run validators we have set on the new information being put in
+    Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
       .then(dbPizzaData => {
         if (!dbPizzaData) {
           res.status(404).json({ message: 'No pizza found with this id!' });

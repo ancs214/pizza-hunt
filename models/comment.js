@@ -10,10 +10,14 @@ const ReplySchema = new Schema(
             default: () => new Types.ObjectId()
         },
         replyBody: {
-            type: String
+            type: String,
+            required: 'You must submit a reply',
+            trim: true
         },
         writtenBy: {
-            type: String
+            type: String,
+            required: 'You must submit a writtenBy author',
+            trim: true
         },
         createdAt: {
             type: Date,
@@ -34,10 +38,14 @@ const ReplySchema = new Schema(
 //CREATE COMMENT SCHEMA
 const CommentSchema = new Schema({
     writtenBy: {
-        type: String
+        type: String,
+        required: 'You must submit a writtenBy author',
+        trim: true
     },
     commentBody: {
-        type: String
+        type: String,
+        required: 'You must submit a comment',
+        trim: true
     },
     createdAt: {
         type: Date,
