@@ -72,8 +72,13 @@ const handlePizzaSubmit = event => {
     })
     .catch(err => {
       console.log(err);
+      //on error (if no internet connection, data stored in new_pizza object store in browser's indexedDB called pizza_hunt)
+      saveRecord(formData);
     });
 };
 
 $pizzaForm.addEventListener('submit', handlePizzaSubmit);
 $addToppingBtn.addEventListener('click', handleAddTopping);
+
+
+
